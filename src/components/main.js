@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Container, Col, Row} from 'reactstrap';
 import Score from './score.js'
 
 const API = 'https://nhl-score-api.herokuapp.com/api/scores/latest';
@@ -12,7 +13,7 @@ class Main extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch(API)
     .then((resp) => resp.json()) // Transform the data into json
     .then(json => this.setState({
@@ -25,9 +26,18 @@ class Main extends Component {
   render() {
 
     return (
-        <div>
-          <Score games={this.state.games} date={this.state.date}/>
-        </div>
+        <Container>
+          <Row>
+            <Col>
+            <h1>
+              Showing scores from {this.state.date}
+            </h1>
+            </Col>
+          </Row>
+          <Row>
+               <Score games={this.state.games} />
+          </Row>
+        </Container>
     )
             
   }

@@ -8,11 +8,10 @@ export default class score extends Component {
 
     return (
       <React.Fragment>
-        <header>
-          Scores from {this.props.date}
-        </header>
         {this.props.games.map((game,i) => <Game key={i} game={game}/>)}
       </React.Fragment>
+      
+        
     )
   }
 }
