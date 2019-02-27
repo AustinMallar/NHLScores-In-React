@@ -4,7 +4,6 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 
-
 function Game(props) {
 
 const homeTeam = props.game.teams.home;

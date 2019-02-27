@@ -10,8 +10,6 @@ export default class score extends Component {
       <React.Fragment>
         {this.props.games.map((game,i) => <Game key={i} game={game}/>)}
       </React.Fragment>
-      
-        
     )
   }
 }
