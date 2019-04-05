@@ -4,7 +4,7 @@ import React from 'react'
 const Spinner = () => {
 
     return (
-        <img src={spinnerSVG}>
+        <img src={spinnerSVG} alt="Loading..">
         </img>
     )
 

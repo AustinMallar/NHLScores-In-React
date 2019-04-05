@@ -25,7 +25,7 @@ class Main extends Component {
 
   render() {
 
-    while (this.state.games.length == 0) {
+    while (this.state.games.length === 0) {
       return (
         <Container>
           <Row className="loading">
@@ -38,9 +38,9 @@ class Main extends Component {
         <Container>
           <Row>
             <Col>
-            <h2>
+            <h3 className="date">
               Showing scores from {this.state.date}
-            </h2>
+            </h3>
             </Col>
           </Row>
           <Row>

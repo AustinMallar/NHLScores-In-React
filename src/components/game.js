@@ -1,7 +1,7 @@
 import React from 'react'
 import {Col} from 'reactstrap'
-import { Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button } from 'reactstrap';
+import { Card, CardText, CardBody,
+  CardTitle, CardSubtitle } from 'reactstrap';
 
 
 function Game(props) {
@@ -15,9 +15,8 @@ const scores = props.game.scores;
     <Col sm="4">
     <Card className="game-card">
         <CardBody>
-          <CardTitle>{homeTeam} vs {awayTeam}</CardTitle>
-          <CardSubtitle>{status}</CardSubtitle>
-          <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+        <CardSubtitle className="game-status">{status}</CardSubtitle>
+          <CardTitle className="scores">{homeTeam} {scores[`${homeTeam}`]} - {awayTeam} {scores[`${awayTeam}`]}</CardTitle>
         </CardBody>
       </Card>
     </Col>

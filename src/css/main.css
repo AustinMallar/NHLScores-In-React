@@ -1,12 +1,16 @@
 header.app-header {
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    padding: 0.8em 0;
 }
 
 .app-title h1 {
     text-align: center;
     text-transform: uppercase;
+    font-size: 2em;
 }
 
 .game-card {
@@ -15,4 +19,17 @@ header.app-header {
 
 .loading {
     justify-content: center;
+}
+
+.date {
+    text-align: center;
+    padding: 0.8em;
+}
+
+.game-status {
+    text-align: end;
+}
+
+.scores {
+    text-align: center;
 }
