@@ -5,15 +5,4 @@ const Spinner = () => {
   return <img src={spinnerSVG} alt="Loading..."></img>;
 };
 
-<<<<<<< HEAD
-    return (
-        <img src={spinnerSVG} alt="Loading..">
-        </img>
-    )
-
-}
-
 export default Spinner;
-=======
-export default Spinner;
->>>>>>> dev
