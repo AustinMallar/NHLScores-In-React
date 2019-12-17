@@ -1,10 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useHistory } from "react-router-dom";
 
 import { Card, CardBody, Row, Col, Badge } from "reactstrap";
 import TeamLogo from "./team-logo";
 
 const Game = props => {
+  let history = useHistory();
+
   const homeTeam = props.game.teams.home.abbreviation;
   const awayTeam = props.game.teams.away.abbreviation;
   const status = props.game.status.state;
@@ -13,11 +16,25 @@ const Game = props => {
   const homeWinner = scores[homeTeam] > scores[awayTeam];
   const awayWinner = scores[homeTeam] < scores[awayTeam];
 
+  const StatusBadge = () => {
+    if (status === "FINAL") {
+      return <Badge color="danger">{status}</Badge>;
+    } else if (status === "LIVE") {
+      return <Badge color="success">{status}</Badge>;
+    } else if (status === "PREVIEW") {
+      return <Badge color="primary">{status}</Badge>;
+    }
+  };
+
+  const goToGameDetails = () => {
+    history.push(`/game/${props.index}`);
+  };
+
   return (
     <Col sm="3">
-      <Card className="game-card">
+      <Card className="game-card" onClick={goToGameDetails}>
         <div className="game-card__status">
-          <Badge color="danger">{status}</Badge>
+          <StatusBadge />
         </div>
         <CardBody className="game-card__body">
           <Row>

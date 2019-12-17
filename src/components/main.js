@@ -1,6 +1,15 @@
 import React, { Component } from "react";
-import { Container, Col, Row } from "reactstrap";
-import Game from "./game";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import { Container, Row } from "reactstrap";
+import Header from "./header";
+import Home from "../pages/home";
+import SingleGame from "../pages/single-game";
 import Spinner from "./spinner";
 
 const API = "https://nhl-score-api.herokuapp.com/api/scores/latest";
@@ -20,10 +29,7 @@ class Main extends Component {
       .then(resp => resp.json()) // Transform the data into json
       .then(json =>
         this.setState(
-          {
-            games: json.games,
-            date: json.date.pretty
-          },
+          { ...this.state, games: json.games, date: json.date.pretty },
           () => console.log(this.state.games)
         )
       );
@@ -40,20 +46,19 @@ class Main extends Component {
       );
     }
     return (
-      <section>
-        <Container>
-          <Row>
-            <Col>
-              <h2>Showing scores from {this.state.date}</h2>
-            </Col>
-          </Row>
-          <Row>
-            {this.state.games.map((game, i) => (
-              <Game key={i} game={game} />
-            ))}
-          </Row>
-        </Container>
-      </section>
+      <Router>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/game/:id">
+              <SingleGame games={this.state.games} />
+            </Route>
+            <Route exact path="/">
+              <Home games={this.state.games} date={this.state.date} />;
+            </Route>
+          </Switch>
+        </main>
+      </Router>
     );
   }
 }

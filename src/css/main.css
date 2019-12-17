@@ -37,6 +37,12 @@ section {
 .game-card {
   margin: 10px 0px;
   position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
 div.game-card__body {
@@ -90,4 +96,10 @@ div.game-card__body {
 
 .loading img {
   width: 120px;
+}
+
+/* Single Game Page */
+
+.teams-playing {
+  text-align: center;
 }
