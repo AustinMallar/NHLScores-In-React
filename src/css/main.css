@@ -1,35 +1,105 @@
-header.app-header {
-    background: black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    padding: 0.8em 0;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.app-title h1 {
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 2em;
+body {
+  font-size: 12px;
+  font-family: "Roboto" !important;
+}
+
+img {
+  width: 100%;
+}
+
+header {
+  background: #000;
+  padding: 1em 0;
+}
+
+header.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-logo img {
+  width: 80px;
+}
+
+section {
+  padding: 2em 0;
 }
 
 .game-card {
-    margin: 10px 0px;
+  margin: 10px 0px;
+  position: relative;
+  transition: transform 0.3s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 2px 5px 0 rgba(0, 0, 0, 0.3);
+}
+
+div.game-card__body {
+  padding: 2.25em 1.25em 1em;
+}
+
+.game-card__status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.15em 0.5em 0 0;
+}
+
+.game-card__team {
+  font-size: 1.2rem;
+}
+
+.game-card__score-col {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.game-card__team-col {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.game-card__score {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.winner {
+  font-weight: bold;
+}
+
+.team-logo__container {
+  padding: 0 !important;
+}
+
+.team-logo__container img {
+  margin-bottom: 0.5rem;
 }
 
 .loading {
-    justify-content: center;
+  justify-content: center;
 }
 
-.date {
-    text-align: center;
-    padding: 0.8em;
+.loading img {
+  width: 120px;
 }
 
-.game-status {
-    text-align: end;
-}
+/* Single Game Page */
 
-.scores {
-    text-align: center;
+.teams-playing {
+  text-align: center;
 }

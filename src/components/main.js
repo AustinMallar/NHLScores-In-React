@@ -1,56 +1,66 @@
-import React, { Component } from 'react';
-import {Container, Col, Row} from 'reactstrap';
-import Score from './score.js'
-import Spinner from './spinner';
+import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import { Container, Row } from "reactstrap";
+import Header from "./header";
+import Home from "../pages/home";
+import SingleGame from "../pages/single-game";
+import Spinner from "./spinner";
 
-const API = 'https://nhl-score-api.herokuapp.com/api/scores/latest';
+const API = "https://nhl-score-api.herokuapp.com/api/scores/latest";
 
 class Main extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        games: []
+      games: [],
+      date: null
     };
   }
 
   componentWillMount() {
     fetch(API)
-    .then((resp) => resp.json()) // Transform the data into json
-    .then(json => this.setState({
-        games: json.games,
-        date: json.date.pretty
-    }))
-   }
+      .then(resp => resp.json()) // Transform the data into json
+      .then(json =>
+        this.setState(
+          { ...this.state, games: json.games, date: json.date.pretty },
+          () => console.log(this.state.games)
+        )
+      );
+  }
 
   render() {
-
     while (this.state.games.length === 0) {
       return (
         <Container>
           <Row className="loading">
             <Spinner />
           </Row>
-      </Container>
-      )
-    } 
-    return (
-        <Container>
-          <Row>
-            <Col>
-            <h3 className="date">
-              Showing scores from {this.state.date}
-            </h3>
-            </Col>
-          </Row>
-          <Row>
-               <Score games={this.state.games} />
-          </Row>
         </Container>
-    )
-    
+      );
+    }
+    return (
+      <Router>
+        <Header />
+        <main>
+          <Switch>
+            <Route exact path="/game/:id">
+              <SingleGame games={this.state.games} />
+            </Route>
+            <Route exact path="/">
+              <Home games={this.state.games} date={this.state.date} />;
+            </Route>
+          </Switch>
+        </main>
+      </Router>
+    );
   }
-
 }
 
 export default Main;
