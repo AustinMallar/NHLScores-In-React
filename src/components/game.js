@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
 import { Card, CardBody, Row, Col, Badge } from "reactstrap";
-import TeamLogo from "./team-logo";
+import TeamLogo from "../helpers/team-logo";
 
 const Game = props => {
   let history = useHistory();
@@ -31,7 +31,7 @@ const Game = props => {
   };
 
   return (
-    <Col sm="3">
+    <Col sm="6">
       <Card className="game-card" onClick={goToGameDetails}>
         <div className="game-card__status">
           <StatusBadge />

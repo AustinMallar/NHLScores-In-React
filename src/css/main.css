@@ -57,7 +57,7 @@ div.game-card__body {
 }
 
 .game-card__team {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .game-card__score-col {
@@ -74,7 +74,7 @@ div.game-card__body {
 
 .game-card__score {
   text-align: right;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -102,4 +102,12 @@ div.game-card__body {
 
 .teams-playing {
   text-align: center;
+}
+
+.teams-playing img {
+  max-width: 80px;
+}
+
+.score-table {
+  margin: 2.5em 0;
 }
