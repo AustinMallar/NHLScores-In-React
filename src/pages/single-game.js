@@ -24,9 +24,7 @@ const SingleGame = props => {
         <Row>
           <Col>
             <h1 className="teams-playing">
-              <TeamLogo teamName={homeTeam} />
-              {homeTeamInfo.name} VS <TeamLogo teamName={awayTeam} />
-              {awayTeamInfo.name}
+              {homeTeamInfo.name} VS {awayTeamInfo.name}
             </h1>
           </Col>
         </Row>
@@ -36,28 +34,62 @@ const SingleGame = props => {
               <thead>
                 <tr>
                   <th>{status}</th>
-                  <th></th>
+                  <th>1</th>
                   <th>2</th>
                   <th>3</th>
-                  {scores.overtime ? <th>OT</th> : ""}
+                  {scores.overtime ? <th>OT</th> : <></>}
                   <th>Total</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">{homeTeamInfo.name}</th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  {scores.overtime ? <td>OT</td> : ""}
+                  <th scope="row">
+                    <TeamLogo teamName={homeTeam} /> {homeTeamInfo.name}
+                  </th>
+                  <td>
+                    {homeTeamGoals.filter(goal => goal.period === "1").length}
+                  </td>
+                  <td>
+                    {homeTeamGoals.filter(goal => goal.period === "2").length}
+                  </td>
+                  <td>
+                    {homeTeamGoals.filter(goal => goal.period === "3").length}
+                  </td>
+                  {scores.overtime ? (
+                    <td>
+                      {
+                        homeTeamGoals.filter(goal => goal.period === "OT")
+                          .length
+                      }
+                    </td>
+                  ) : (
+                    <></>
+                  )}
                   <td>{scores[homeTeam]}</td>
                 </tr>
                 <tr>
-                  <th scope="row">{awayTeamInfo.name}</th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  {scores.overtime ? <td>OT</td> : ""}
+                  <th scope="row">
+                    <TeamLogo teamName={awayTeam} /> {awayTeamInfo.name}
+                  </th>
+                  <td>
+                    {awayTeamGoals.filter(goal => goal.period === "1").length}
+                  </td>
+                  <td>
+                    {awayTeamGoals.filter(goal => goal.period === "2").length}
+                  </td>
+                  <td>
+                    {awayTeamGoals.filter(goal => goal.period === "3").length}
+                  </td>
+                  {scores.overtime ? (
+                    <td>
+                      {
+                        awayTeamGoals.filter(goal => goal.period === "OT")
+                          .length
+                      }
+                    </td>
+                  ) : (
+                    <></>
+                  )}
                   <td>{scores[awayTeam]}</td>
                 </tr>
               </tbody>

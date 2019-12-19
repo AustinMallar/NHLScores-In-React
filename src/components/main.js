@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import Header from "./header";
 import Home from "../pages/home";
@@ -28,10 +22,11 @@ class Main extends Component {
     fetch(API)
       .then(resp => resp.json()) // Transform the data into json
       .then(json =>
-        this.setState(
-          { ...this.state, games: json.games, date: json.date.pretty },
-          () => console.log(this.state.games)
-        )
+        this.setState({
+          ...this.state,
+          games: json.games,
+          date: json.date.pretty
+        })
       );
   }
 
