@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Card, CardBody, Row, Col, Badge } from "reactstrap";
 import TeamLogo from "../helpers/team-logo";
 
-const Game = props => {
+const Game = (props) => {
   let history = useHistory();
 
   const homeTeam = props.game.teams.home.abbreviation;
@@ -23,6 +23,8 @@ const Game = props => {
       return <Badge color="success">{status}</Badge>;
     } else if (status === "PREVIEW") {
       return <Badge color="primary">{status}</Badge>;
+    } else {
+      return <Badge color="warning">{status}</Badge>;
     }
   };
 
@@ -78,7 +80,7 @@ const Game = props => {
 };
 
 Game.propTypes = {
-  game: PropTypes.object.isRequired
+  game: PropTypes.object.isRequired,
 };
 
 export default Game;
