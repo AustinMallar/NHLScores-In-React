@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, Row } from "reactstrap";
-import Header from "./header";
+import Header from "./Header";
 import Home from "../pages/home";
 import SingleGame from "../pages/single-game";
-import Spinner from "./spinner";
+import Spinner from "./Spinner";
 
 const API = "https://nhl-score-api.herokuapp.com/api/scores/latest";
 
@@ -14,18 +14,18 @@ class Main extends Component {
 
     this.state = {
       games: [],
-      date: null
+      date: null,
     };
   }
 
   componentWillMount() {
     fetch(API)
-      .then(resp => resp.json()) // Transform the data into json
-      .then(json =>
+      .then((resp) => resp.json())
+      .then((json) =>
         this.setState({
           ...this.state,
           games: json.games,
-          date: json.date.pretty
+          date: json.date.pretty,
         })
       );
   }

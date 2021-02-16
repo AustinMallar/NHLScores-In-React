@@ -1,8 +1,8 @@
 import React from "react";
 import { Container, Col, Row } from "reactstrap";
-import Game from "../components/game";
+import Game from "../components/Game";
 
-const Home = props => {
+const Home = (props) => {
   return (
     <section>
       <Container>
